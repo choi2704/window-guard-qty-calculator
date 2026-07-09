@@ -1,6 +1,85 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>강동자바라 스텐 방범창 평수 견적계산기</title><link rel="stylesheet" href="style.css?v=4"></head><body>
-<header><b>강동자바라</b><nav><a href="tel:01075950484">전화 010-7595-0484</a><a href="https://talk.naver.com/ct/w4a85f?frm=psf" target="_blank">네이버 톡톡</a></nav></header>
-<main><section class="hero"><span>WINDOW GUARD ESTIMATE</span><h1>스텐 방범창<br><em>평수 견적계산기</em></h1><p>가로·세로(mm)를 입력하면 평수와 예상금액을 자동으로 계산합니다.</p><a href="#calc">견적 바로 계산하기</a></section>
-<section class="features"><div><b>재질 선택</b><p>SUS201 / SUS304</p></div><div><b>평수 자동계산</b><p>가로×세로÷90,000</p></div><div><b>여러 창문 합산</b><p>창문 추가 가능</p></div><div><b>바로 주문</b><p>견적 복사 후 이동</p></div></section>
-<section class="calc" id="calc"><div class="card"><h2><i>1</i>제품 및 창문 입력</h2><label>재질</label><div class="grid two" id="materialOptions"></div><label>색상</label><div class="grid three" id="colorOptions"></div><div class="toolbar"><button type="button" id="addWindow">+ 창문 추가</button><button type="button" id="clearAll">전체 초기화</button></div><div id="windowList" class="windowList"></div><div class="info"><b>계산 기준</b><p>평수 = 가로(mm) × 세로(mm) ÷ 90,000 후 반올림합니다.</p></div><div class="info orange"><b>단가 안내</b><p>SUS201: 평당 4,700원 / SUS304: 평당 5,700원 기준입니다.</p></div></div>
-<div class="card result"><h2><i>2</i>견적 결과</h2><div class="total"><span>총 예상 견적 금액</span><strong id="totalPrice">0원</strong><small>총 적용평수 × 평당 단가</small></div><dl><div><dt>재질</dt><dd id="materialText">SUS201</dd></div><div><dt>색상</dt><dd id="colorText">화이트</dd></div><div><dt>총 창문</dt><dd id="windowCount">1개</dd></div><div><dt>총 적용평수</dt><dd id="totalPyeong">0평</dd></div><div><dt>평당 단가</dt><dd id="rateText">4,700원/평</dd></div><div><dt>총 예상금액</dt><dd id="totalPriceText">0원</dd></div></dl><div class="quoteTableWrap"><table id="summaryTable"><thead><tr><th>창문</th><th>사이즈</th><th>계산평수</th><th>적용평수</th><th>금액</th></tr></thead><tbody></tbody></table></div><div class="guide"><p id="guideText">창문 사이즈를 입력하면 평수와 금액이 자동 계산됩니다.</p></div><div class="actions"><button id="copy" type="button">견적내용 복사하기</button><a class="talk" href="https://talk.naver.com/ct/w4a85f?frm=psf" target="_blank">네이버 톡톡 문의하기</a><a class="phone" href="tel:01075950484">전화문의 010-7595-0484</a><a class="order" href="https://kdjavara.kr/product/%ED%85%8C%EC%8A%A4%ED%8A%B8-sus-%EC%85%80%ED%94%84-%EC%8B%9C%EA%B3%B5-304%EC%8A%A4%ED%85%8C%EC%9D%B8%EB%A6%AC%EC%8A%A4-%EB%B0%A9%EB%B2%94%EC%B0%BD-%EC%99%84%EC%A1%B0%EB%A6%BD%EC%A0%9C%ED%92%88-%EC%8A%A4%ED%85%90-%EC%B0%BD%EB%AC%B8-%EC%85%80%ED%94%84-%EC%84%A4%EC%B9%98-%EB%A7%9E%EC%B6%A4-%EC%A0%9C%EC%9E%91/775/category/52/display/1/" target="_blank">계산한 사양으로 주문하기</a></div><p class="notice">※ 본 계산기는 예상 견적용입니다.</p></div></section></main><footer>강동자바라 · 스텐 방범창 맞춤 제작</footer><script src="prices.js?v=4"></script><script src="script.js?v=4"></script></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>강동자바라 스텐 방범창 평수견적 계산기</title>
+<link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+<main class="kd-wrap">
+  <section class="kd-banner">
+    <img src="images/banner.png" alt="스텐 방범창 평수견적 계산기">
+  </section>
+
+  <section class="kd-calculator" id="calculator">
+    <div class="left-panel">
+      <div class="field-section">
+        <h3>1. 재질 선택</h3>
+        <div id="materialOptions" class="radio-list"></div>
+      </div>
+
+      <div class="input-row">
+        <div class="field-section">
+          <h3>2. 가로 (mm)</h3>
+          <input id="widthInput" type="number" placeholder="예) 1550">
+        </div>
+        <div class="field-section">
+          <h3>3. 세로 (mm)</h3>
+          <input id="heightInput" type="number" placeholder="예) 1650">
+        </div>
+      </div>
+
+      <div class="field-section">
+        <h3>4. 창문 개수</h3>
+        <div class="qty-box">
+          <button type="button" id="minusBtn">−</button>
+          <input id="qtyInput" type="number" value="1" min="1">
+          <button type="button" id="plusBtn">＋</button>
+        </div>
+      </div>
+
+      <button type="button" id="addWindow" class="add-btn">＋ 창문 추가하기</button>
+    </div>
+
+    <div class="right-panel">
+      <div class="result-box">
+        <h3>계산 결과</h3>
+        <div class="result-row"><span>평수 (반올림)</span><b id="currentPyeong">0 평</b></div>
+        <div class="result-row"><span>예상금액</span><b id="currentAmount">0 원</b></div>
+      </div>
+
+      <h3 class="list-title">창문 목록</h3>
+      <div class="table-wrap">
+        <table id="windowTable">
+          <thead>
+            <tr><th>No.</th><th>가로(mm)</th><th>세로(mm)</th><th>평수</th><th>금액</th><th>삭제</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="emptyText" class="empty-text">창문을 추가해주세요.</div>
+      </div>
+
+      <div class="sum-box">
+        <div class="result-row"><span>총 평수</span><b id="totalPyeong">0 평</b></div>
+        <div class="result-row"><span>총 예상금액</span><b id="totalAmount">0 원</b></div>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button type="button" id="copyBtn" class="copy">견적내용 복사</button>
+      <a href="https://talk.naver.com/ct/w4a85f?frm=psf" target="_blank" class="talk">네이버 톡톡 문의</a>
+      <a href="tel:01075950484" class="phone">전화 문의</a>
+      <a href="https://kdjavara.kr/product/%ED%85%8C%EC%8A%A4%ED%8A%B8-sus-%EC%85%80%ED%94%84-%EC%8B%9C%EA%B3%B5-304%EC%8A%A4%ED%85%8C%EC%9D%B8%EB%A6%AC%EC%8A%A4-%EB%B0%A9%EB%B2%94%EC%B0%BD-%EC%99%84%EC%A1%B0%EB%A6%BD%EC%A0%9C%ED%92%88-%EC%8A%A4%ED%85%90-%EC%B0%BD%EB%AC%B8-%EC%85%80%ED%94%84-%EC%84%A4%EC%B9%98-%EB%A7%9E%EC%B6%A4-%EC%A0%9C%EC%9E%91/775/category/52/display/1/" target="_blank" id="orderBtn" class="order">계산한 사양으로 주문하기</a>
+    </div>
+
+    <div class="notice-box">
+      <p>· 여러 창문의 견적을 한 번에 계산할 수 있습니다.</p>
+      <p>· 계산된 내용은 ‘견적내용 복사’ 버튼을 눌러 주문 시 붙여넣기 하세요.</p>
+    </div>
+  </section>
+</main>
+<script src="prices.js?v=5"></script>
+<script src="script.js?v=5"></script>
+</body>
+</html>
