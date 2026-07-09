@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>강동자바라 스텐 방범창 주문수량 계산기</title>
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<header>
+  <b>강동자바라</b>
+  <nav>
+    <a href="tel:01075950484">전화 010-7595-0484</a>
+    <a href="https://talk.naver.com/ct/w4a85f?frm=psf" target="_blank">네이버 톡톡</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <span>WINDOW GUARD QUANTITY CALCULATOR</span>
+  <h1>스텐 방범창<br><em>주문수량 계산기</em></h1>
+  <p>가로·세로(mm)를 입력하면 표 기준 주문수량을 자동으로 계산합니다.</p>
+  <a href="#calc">수량 바로 계산하기</a>
+</section>
+
+<section class="features">
+  <div><b>사이즈 입력</b><p>가로·세로 mm 입력</p></div>
+  <div><b>표 기준 자동계산</b><p>100mm 구간 자동 선택</p></div>
+  <div><b>창문 개수 반영</b><p>여러 개도 총수량 계산</p></div>
+  <div><b>주문 수량 안내</b><p>구매수량과 동일하게 선택</p></div>
+</section>
+
+<section class="calc" id="calc">
+<div class="card">
+<h2><i>1</i>사이즈 입력</h2>
+<label>가로 × 세로(mm)</label>
+<div class="size"><input id="width" type="number" placeholder="가로 예: 1550"><span>×</span><input id="height" type="number" placeholder="세로 예: 1650"></div>
+<div class="box"><span>선택 구간</span><b id="rangeText">사이즈를 입력해주세요</b></div>
+<label>창문 개수</label>
+<div class="qty"><button id="minus" type="button">-</button><input id="qty" type="number" value="1" min="1"><button id="plus" type="button">+</button><span>개소</span></div>
+<div class="info"><b>주문 방법</b><p>계산된 총 주문수량을 스마트스토어/쇼핑몰 구매수량과 동일하게 선택해주세요.</p></div>
+<div class="info orange"><b>예시</b><p>가로 1550mm × 세로 1650mm = 212개. 창문 2개면 총 424개입니다.</p></div>
+<button class="tableBtn" type="button" id="toggleTable">수량표 보기</button>
+<div class="tables" id="tables"><table id="priceTable"></table></div>
+</div>
+
+<div class="card result">
+<h2><i>2</i>계산 결과</h2>
+<div class="total"><span>총 주문수량</span><strong id="totalQty">0개</strong><small>구매수량과 동일하게 선택해주세요</small></div>
+<dl>
+<div><dt>입력 사이즈</dt><dd id="sizeText">사이즈를 입력해주세요</dd></div>
+<div><dt>적용 구간</dt><dd id="applyText">-</dd></div>
+<div><dt>1개소 주문수량</dt><dd id="unitQtyText">0개</dd></div>
+<div><dt>창문 개수</dt><dd id="qtyText">1개소</dd></div>
+<div><dt>총 주문수량</dt><dd id="totalQtyText">0개</dd></div>
+</dl>
+<div class="guide"><p id="guideText">가로와 세로를 입력하면 주문수량이 자동 계산됩니다.</p></div>
+<div class="actions">
+<button id="copy" type="button">계산내용 복사하기</button>
+<a class="talk" href="https://talk.naver.com/ct/w4a85f?frm=psf" target="_blank">네이버 톡톡 문의하기</a>
+<a class="phone" href="tel:01075950484">전화문의 010-7595-0484</a>
+<a class="order" href="https://kdjavara.kr/" target="_blank">계산한 수량으로 주문하기</a>
+</div>
+<p class="notice">※ 입력하신 사이즈는 표 기준 구간으로 계산됩니다. 2400mm 초과 사이즈는 별도 문의해주세요.</p>
+</div>
+</section>
+</main>
+<footer>강동자바라 · 스텐 방범창 맞춤 제작</footer>
+<script src="prices.js?v=1"></script>
+<script src="script.js?v=1"></script>
+</body>
+</html>
