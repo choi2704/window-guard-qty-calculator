@@ -1,1 +1,1 @@
-window.WINDOW_GUARD_PYEONG_TABLE={"materials": [{"name": "SUS201", "rate": 4700}, {"name": "SUS304", "rate": 5700}], "divisor": 90000};
+window.WINDOW_GUARD_PYEONG_TABLE={"materials": [{"name": "SUS201", "rate": 5000}, {"name": "SUS304", "rate": 6700}], "divisor": 90000};
