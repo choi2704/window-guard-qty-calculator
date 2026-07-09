@@ -1,0 +1,1 @@
+# window-guard-qty-calculator
