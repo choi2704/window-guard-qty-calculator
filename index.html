@@ -4,14 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>강동자바라 스텐 방범창 견적 계산기</title>
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <main class="kd-wrap">
-  <section class="kd-banner">
-    <img src="images/banner.png" alt="스텐 방범창 견적 계산기">
-  </section>
-
   <section class="kd-calculator" id="calculator">
     <div class="left-panel">
       <div class="field-section">
@@ -45,7 +41,6 @@
     <div class="right-panel">
       <div class="result-box">
         <h3>계산 결과</h3>
-        <div class="result-row"><span>가격 기준</span><b id="currentPyeong">규격을 입력하세요</b></div>
         <div class="result-row"><span>예상금액</span><b id="currentAmount">0 원</b></div>
       </div>
 
@@ -53,7 +48,7 @@
       <div class="table-wrap">
         <table id="windowTable">
           <thead>
-            <tr><th>No.</th><th>재질</th><th>가로(mm)</th><th>세로(mm)</th><th>가격 기준</th><th>금액</th><th>삭제</th></tr>
+            <tr><th>No.</th><th>재질</th><th>가로(mm)</th><th>세로(mm)</th><th>금액</th><th>삭제</th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -68,7 +63,6 @@
 
     <div class="button-row">
       <button type="button" id="copyBtn" class="copy">견적내용 복사</button>
-      <a href="https://talk.naver.com/ct/w4a85f?frm=psf" target="_blank" class="talk">네이버 톡톡 문의</a>
       <a href="tel:01075950484" class="phone">전화 문의</a>
       <a href="https://kdjavara.kr/product/%ED%85%8C%EC%8A%A4%ED%8A%B8-sus-%EC%85%80%ED%94%84-%EC%8B%9C%EA%B3%B5-304%EC%8A%A4%ED%85%8C%EC%9D%B8%EB%A6%AC%EC%8A%A4-%EB%B0%A9%EB%B2%94%EC%B0%BD-%EC%99%84%EC%A1%B0%EB%A6%BD%EC%A0%9C%ED%92%88-%EC%8A%A4%ED%85%90-%EC%B0%BD%EB%AC%B8-%EC%85%80%ED%94%84-%EC%84%A4%EC%B9%98-%EB%A7%9E%EC%B6%A4-%EC%A0%9C%EC%9E%91/775/category/52/display/1/" target="_blank" id="orderBtn" class="order">계산한 사양으로 주문하기</a>
     </div>
@@ -80,7 +74,7 @@
     </div>
   </section>
 </main>
-<script src="prices.js?v=6"></script>
-<script src="script.js?v=6"></script>
+<script src="prices.js?v=7"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>
