@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>강동자바라 스텐 방범창 평수견적 계산기</title>
-<link rel="stylesheet" href="style.css?v=5">
+<title>강동자바라 스텐 방범창 견적 계산기</title>
+<link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 <main class="kd-wrap">
   <section class="kd-banner">
-    <img src="images/banner.png" alt="스텐 방범창 평수견적 계산기">
+    <img src="images/banner.png" alt="스텐 방범창 견적 계산기">
   </section>
 
   <section class="kd-calculator" id="calculator">
@@ -45,7 +45,7 @@
     <div class="right-panel">
       <div class="result-box">
         <h3>계산 결과</h3>
-        <div class="result-row"><span>평수 (반올림)</span><b id="currentPyeong">0 평</b></div>
+        <div class="result-row"><span>가격 기준</span><b id="currentPyeong">규격을 입력하세요</b></div>
         <div class="result-row"><span>예상금액</span><b id="currentAmount">0 원</b></div>
       </div>
 
@@ -53,7 +53,7 @@
       <div class="table-wrap">
         <table id="windowTable">
           <thead>
-            <tr><th>No.</th><th>가로(mm)</th><th>세로(mm)</th><th>평수</th><th>금액</th><th>삭제</th></tr>
+            <tr><th>No.</th><th>재질</th><th>가로(mm)</th><th>세로(mm)</th><th>가격 기준</th><th>금액</th><th>삭제</th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -61,7 +61,7 @@
       </div>
 
       <div class="sum-box">
-        <div class="result-row"><span>총 평수</span><b id="totalPyeong">0 평</b></div>
+        <div class="result-row"><span>총 수량</span><b id="totalPyeong">0 개</b></div>
         <div class="result-row"><span>총 예상금액</span><b id="totalAmount">0 원</b></div>
       </div>
     </div>
@@ -75,11 +75,12 @@
 
     <div class="notice-box">
       <p>· 여러 창문의 견적을 한 번에 계산할 수 있습니다.</p>
+      <p>· 온라인팀 견적기의 스텐 방범창 최종가격 기준으로 계산합니다.</p>
       <p>· 계산된 내용은 ‘견적내용 복사’ 버튼을 눌러 주문 시 붙여넣기 하세요.</p>
     </div>
   </section>
 </main>
-<script src="prices.js?v=5"></script>
-<script src="script.js?v=5"></script>
+<script src="prices.js?v=6"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>
