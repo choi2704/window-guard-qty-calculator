@@ -3,7 +3,7 @@ const T=window.WINDOW_GUARD_PRICE_TABLE;
 const $=id=>document.getElementById(id);
 let material="SUS201";
 let items=[];
-const e={mat:$("materialOptions"),w:$("widthInput"),h:$("heightInput"),q:$("qtyInput"),minus:$("minusBtn"),plus:$("plusBtn"),add:$("addWindow"),tbody:document.querySelector("#windowTable tbody"),empty:$("emptyText"),curA:$("currentAmount"),orderQ:$("currentOrderQty"),totP:$("totalPyeong"),totA:$("totalAmount"),copy:$("copyBtn"),order:$("orderBtn")};
+const e={mat:$("materialOptions"),w:$("widthInput"),h:$("heightInput"),q:$("qtyInput"),minus:$("minusBtn"),plus:$("plusBtn"),add:$("addWindow"),tbody:document.querySelector("#windowTable tbody"),empty:$("emptyText"),curA:$("currentAmount"),totOrderQ:$("totalOrderQty"),totP:$("totalPyeong"),totA:$("totalAmount"),copy:$("copyBtn"),order:$("orderBtn")};
 function comma(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,",")}
 function won(n){return comma(n)+" 원"}
 function orderQty(n){return Math.floor((Number(n)||0)/1000)}
@@ -45,7 +45,7 @@ function renderMat(){
 }
 function current(){
   const r=calc(e.w.value,e.h.value,material),qty=Math.max(1,Number(e.q.value||1));
-  const amount=r.valid?r.a*qty:0;e.curA.textContent=amount?won(amount):"0 원";e.orderQ.textContent=comma(orderQty(amount))+" 개";
+  const amount=r.valid?r.a*qty:0;e.curA.textContent=amount?won(amount):"0 원";
 }
 function addItem(){
   const w=Number(e.w.value),h=Number(e.h.value),q=Math.max(1,Number(e.q.value||1)),r=calc(w,h,material);
@@ -57,12 +57,12 @@ function addItem(){
 function renderAll(){
   current();e.tbody.innerHTML="";let ta=0;
   items.forEach((it,i)=>{const r=calc(it.w,it.h,it.material);ta+=r.a;const tr=document.createElement("tr");tr.innerHTML=`<td>${i+1}</td><td>${it.material}</td><td>${it.w}</td><td>${it.h}</td><td>${won(r.a)}</td><td><button class="del-btn" type="button">삭제</button></td>`;tr.querySelector("button").onclick=()=>{items.splice(i,1);renderAll()};e.tbody.appendChild(tr)});
-  e.empty.style.display=items.length?"none":"flex";e.totP.textContent=items.length+" 개";e.totA.textContent=won(ta);
+  e.empty.style.display=items.length?"none":"flex";e.totP.textContent=items.length+" 개";e.totA.textContent=won(ta);e.totOrderQ.textContent=comma(orderQty(ta))+" 개";
 }
 function text(){
   let ta=0;let lines=["강동자바라 스텐 방범창 견적",""];
   items.forEach((it,i)=>{const r=calc(it.w,it.h,it.material);ta+=r.a;lines.push(`No.${i+1} ${it.material} ${it.w} × ${it.h}mm`,`${won(r.a)}`,"")});
-  lines.push("----------------",`총 수량: ${items.length}개`,`총 예상금액: ${won(ta)}`,"","※ 가로·세로 입력범위: 1~3000mm","문의: 010-7595-0484");return lines.join("\n")
+  lines.push("----------------",`총 수량: ${items.length}개`,`총 예상금액: ${won(ta)}`,`주문수량: ${comma(orderQty(ta))}개`,"","※ 가로·세로 입력범위: 1~3000mm","문의: 010-7595-0484");return lines.join("\n")
 }
 async function copyText(){const t=text();try{await navigator.clipboard.writeText(t);alert("견적내용이 복사되었습니다.")}catch(err){prompt("아래 내용을 복사해주세요.",t)}}
 async function orderGo(ev){ev.preventDefault();try{await navigator.clipboard.writeText(text())}catch(err){}window.open("https://kdjavara.kr/product/%ED%85%8C%EC%8A%A4%ED%8A%B8-sus-%EC%85%80%ED%94%84-%EC%8B%9C%EA%B3%B5-304%EC%8A%A4%ED%85%8C%EC%9D%B8%EB%A6%AC%EC%8A%A4-%EB%B0%A9%EB%B2%94%EC%B0%BD-%EC%99%84%EC%A1%B0%EB%A6%BD%EC%A0%9C%ED%92%88-%EC%8A%A4%ED%85%90-%EC%B0%BD%EB%AC%B8-%EC%85%80%ED%94%84-%EC%84%A4%EC%B9%98-%EB%A7%9E%EC%B6%A4-%EC%A0%9C%EC%9E%91/775/category/52/display/1/","_blank")}
