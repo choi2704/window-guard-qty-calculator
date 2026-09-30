@@ -3,9 +3,10 @@ const T=window.WINDOW_GUARD_PRICE_TABLE;
 const $=id=>document.getElementById(id);
 let material="SUS201";
 let items=[];
-const e={mat:$("materialOptions"),w:$("widthInput"),h:$("heightInput"),q:$("qtyInput"),minus:$("minusBtn"),plus:$("plusBtn"),add:$("addWindow"),tbody:document.querySelector("#windowTable tbody"),empty:$("emptyText"),curA:$("currentAmount"),totP:$("totalPyeong"),totA:$("totalAmount"),copy:$("copyBtn"),order:$("orderBtn")};
+const e={mat:$("materialOptions"),w:$("widthInput"),h:$("heightInput"),q:$("qtyInput"),minus:$("minusBtn"),plus:$("plusBtn"),add:$("addWindow"),tbody:document.querySelector("#windowTable tbody"),empty:$("emptyText"),curA:$("currentAmount"),orderQ:$("currentOrderQty"),totP:$("totalPyeong"),totA:$("totalAmount"),copy:$("copyBtn"),order:$("orderBtn")};
 function comma(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,",")}
 function won(n){return comma(n)+" 원"}
+function orderQty(n){return Math.floor((Number(n)||0)/1000)}
 function band(v){v=Number(v)||0;if(v<=0||v>3000)return -1;if(v<=900)return 0;return Math.ceil((v-900)/100)}
 function calc201(w,h){
   const s=T.sus201,row=band(h),col=band(w),valid=row>=0&&col>=0;
@@ -44,7 +45,7 @@ function renderMat(){
 }
 function current(){
   const r=calc(e.w.value,e.h.value,material),qty=Math.max(1,Number(e.q.value||1));
-  e.curA.textContent=r.valid?won(r.a*qty):"0 원";
+  const amount=r.valid?r.a*qty:0;e.curA.textContent=amount?won(amount):"0 원";e.orderQ.textContent=comma(orderQty(amount))+" 개";
 }
 function addItem(){
   const w=Number(e.w.value),h=Number(e.h.value),q=Math.max(1,Number(e.q.value||1)),r=calc(w,h,material);
