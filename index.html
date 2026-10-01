@@ -3,43 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>강동자바라 알루미늄 방범창 견적 계산기</title>
-<link rel="stylesheet" href="style.css?v=1">
+<title>강동자바라 스텐 방범창 견적 계산기</title>
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 <main class="kd-wrap">
   <section class="kd-banner">
-    <div class="banner-text">
-      <div class="brand"><span class="kmark">K</span><div><b>강동자바라</b><small>KANGDONG JAVARA</small></div></div>
-      <h1>알루미늄 방범창<br><em>평수견적 계산기</em></h1>
-      <p>가로 · 세로 입력만으로<br>주문수량과 예상금액을 바로 확인하세요!</p>
-    </div>
-    <div class="banner-art" aria-hidden="true">
-      <div class="window-frame"><div class="bars"></div><div class="midbar"></div></div>
-    </div>
+    <img src="images/banner-top.png" alt="강동자바라 스텐 방범창 평수견적 계산기">
   </section>
-
-  <section class="kd-calculator">
+  <section class="kd-calculator" id="calculator">
     <div class="left-panel">
-      <div class="field-section"><h3>1. 가로 (mm)</h3><input id="widthInput" type="number" inputmode="numeric" min="1" max="3000" placeholder="예) 1550"></div>
-      <div class="field-section"><h3>2. 세로 (mm)</h3><input id="heightInput" type="number" inputmode="numeric" min="1" max="3000" placeholder="예) 1650"></div>
-      <div class="field-section"><h3>3. 창문 개수</h3><div class="qty-box"><button id="minusBtn" type="button">−</button><input id="qtyInput" type="number" value="1" min="1"><button id="plusBtn" type="button">＋</button></div></div>
-      <button id="addWindow" type="button" class="add-btn">＋ 창문 추가하기</button>
-      <div class="min-note">※ 최소 주문 기준: <b>900×900mm</b><br>900mm 미만은 900mm로 올려 계산합니다.</div>
+      <div class="field-section">
+        <h3>1. 재질 선택</h3>
+        <div id="materialOptions" class="radio-list"></div>
+      </div>
+
+      <div class="input-row">
+        <div class="field-section">
+          <h3>2. 가로 (mm)</h3>
+          <input id="widthInput" type="number" placeholder="예) 1550">
+        </div>
+        <div class="field-section">
+          <h3>3. 세로 (mm)</h3>
+          <input id="heightInput" type="number" placeholder="예) 1650">
+        </div>
+      </div>
+
+      <div class="field-section">
+        <h3>4. 창문 개수</h3>
+        <div class="qty-box">
+          <button type="button" id="minusBtn">−</button>
+          <input id="qtyInput" type="number" value="1" min="1">
+          <button type="button" id="plusBtn">＋</button>
+        </div>
+      </div>
+
+      <button type="button" id="addWindow" class="add-btn">＋ 창문 추가하기</button>
     </div>
 
     <div class="right-panel">
-      <div class="result-box"><h3>계산 결과</h3><div class="result-row"><span>예상금액</span><b id="currentAmount">0 원</b></div></div>
-      <h3 class="list-title">창문 목록</h3>
-      <div class="table-wrap"><table id="windowTable"><thead><tr><th>No.</th><th>가로</th><th>세로</th><th>적용</th><th>금액</th><th>삭제</th></tr></thead><tbody></tbody></table><div id="emptyText" class="empty-text">창문을 추가해주세요.</div></div>
-      <div class="sum-box">
-        <div class="result-row"><span>총 수량</span><b id="totalCount">0 개</b></div>
-        <div class="result-row"><span>총 예상금액</span><b id="totalAmount">0 원</b></div>
-        <div class="result-row order-qty-row"><span>주문수량<br><small>총 예상금액 기준 / 1,000원 단위 올림</small></span><b id="totalOrderQty">0 개</b></div>
+      <div class="result-box">
+        <h3>계산 결과</h3>
+        <div class="result-row"><span>예상금액</span><b id="currentAmount">0 원</b></div>
       </div>
+
+      <h3 class="list-title">창문 목록</h3>
+      <div class="table-wrap">
+        <table id="windowTable">
+          <thead>
+            <tr><th>No.</th><th>재질</th><th>가로(mm)</th><th>세로(mm)</th><th>금액</th><th>삭제</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div id="emptyText" class="empty-text">창문을 추가해주세요.</div>
+      </div>
+
+      <div class="sum-box">
+        <div class="result-row"><span>총 수량</span><b id="totalPyeong">0 개</b></div>
+        <div class="result-row"><span>총 예상금액</span><b id="totalAmount">0 원</b></div>
+        <div class="result-row order-qty-row"><span>주문수량<br><small>총 예상금액 기준 / 100원 단위 버림</small></span><b id="totalOrderQty">0 개</b></div>
+      </div>
+    </div>
+
+
+    <div class="notice-box">
+      <p>· 여러 창문의 견적을 한 번에 계산할 수 있습니다.</p>
+      <p>· 온라인팀 견적기의 스텐 방범창 최종가격 기준으로 계산합니다.</p>
     </div>
   </section>
 </main>
-<script src="price-data.js?v=1"></script>
-<script src="script.js?v=1"></script>
-</body></html>
+<script src="prices.js?v=9"></script>
+<script src="script.js?v=9"></script>
+</body>
+</html>
